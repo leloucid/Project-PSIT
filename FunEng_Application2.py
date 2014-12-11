@@ -2,6 +2,7 @@
 '''FunEng Application'''
 from Tkinter import *
 import random
+import winsound
 root = Tk()
 #Head
 '''
@@ -52,8 +53,10 @@ wrd = random.choice(dct.values())
 one = Label(root, text="Fun English A bit Everyday!"\
             , font=("Helvetica", 35), fg="#5f62d9").grid(row=0 ,column=1)
 #Photo for app
-avatar = PhotoImage(file="avatar.gif")
-bubble = PhotoImage(file="bubble.gif")
+avatar = PhotoImage(file="Poji3.gif")
+bubble = PhotoImage(file="bubble2.gif")
+wrong  = PhotoImage(file="Poji2.gif")
+right  = PhotoImage(file="Poji.gif")
 pic_1 = Label(root, image=avatar).grid(row=2, column=0)
 pic_2 = Label(root, image=bubble).grid(row=2, column=1)
 
@@ -62,13 +65,16 @@ def printcheck(answer, point):
     if answer.lower() in dct.keys():
         answer_2 = Message(root, text="                         "\
                     , font=("Helvetica", 19)\
-                , fg="#5f62d9", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+                , fg="#2a3373", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
         wrd = random.choice(dct.values())
         answer_2 = Message(root, text="%s" % (wrd)\
                     , font=("Helvetica", 19)\
-                , fg="#5f62d9", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+                , fg="#2a3373", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+        pic_3 = Label(root, image=right).grid(row=2, column=0)
+        winsound.PlaySound('b.wav',winsound.SND_FILENAME)
     else:
-        print 'kakkkkkkkkkkkkkkk'    
+        pic_4 = Label(root, image=wrong).grid(row=2, column=0)
+        winsound.PlaySound('a.wav',winsound.SND_FILENAME)
 
 #Box to type + sent button
 point = Entry(root)        
@@ -81,6 +87,6 @@ point = 0
 #Answer box 
 answer_2 = Message(root, text="%s" % (wrd)\
                  , font=("Helvetica", 15)\
-               , fg="#5f62d9", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+               , fg="#2a3373", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
 
 mainloop()
