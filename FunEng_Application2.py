@@ -64,9 +64,7 @@ pic_2 = Label(root, image=bubble).grid(row=2, column=1)
 def printcheck(answer, point):
     print type(answer)
     global wrd
-    if dct.has_key(answer.lower()) == True:
-        print 'yes'
-    if answer.lower() in dct.keys():
+    if dct.has_key(answer.lower()) == True and dct[answer.lower()] == wrd :
         answer_2 = Message(root, text="                         "\
                     , font=("Helvetica", 19)\
                 , fg="#2a3373", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
