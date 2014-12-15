@@ -6,7 +6,7 @@ import winsound
 root = Tk()
 #Head
 '''
-English practice game
+English practice game more and more fun!
 '''
 point = 0
 dct = {'expect':'คาดหวัง', \
@@ -27,7 +27,7 @@ dct = {'expect':'คาดหวัง', \
        'customs':'ศุลกากร',\
        'florist':'ร้านขายดอกไม้',\
        'patient':'อดทน',\
-       'Mental':'เกี่ยวกับจิตใจ',\
+       'mental':'เกี่ยวกับจิตใจ',\
        'acceptable':'ยอมรับได้',\
        'nonsense':'เรื่องไร้สาระ',\
        'obedience':'การเชื่อฟังคำสั่ง',\
@@ -60,8 +60,12 @@ right  = PhotoImage(file="Poji.gif")
 pic_1 = Label(root, image=avatar).grid(row=2, column=0)
 pic_2 = Label(root, image=bubble).grid(row=2, column=1)
 
+
 def printcheck(answer, point):
     print type(answer)
+    global wrd
+    if dct.has_key(answer.lower()) == True:
+        print 'yes'
     if answer.lower() in dct.keys():
         answer_2 = Message(root, text="                         "\
                     , font=("Helvetica", 19)\
@@ -71,11 +75,9 @@ def printcheck(answer, point):
                     , font=("Helvetica", 19)\
                 , fg="#2a3373", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0)
-        #sound of win
         winsound.PlaySound('b.wav',winsound.SND_FILENAME)
     else:
         pic_4 = Label(root, image=wrong).grid(row=2, column=0)
-        #sound of lose
         winsound.PlaySound('a.wav',winsound.SND_FILENAME)
 
 #Box to type + sent button
