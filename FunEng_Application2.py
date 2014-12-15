@@ -71,9 +71,11 @@ def printcheck(answer, point):
                     , font=("Helvetica", 19)\
                 , fg="#2a3373", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0)
+        #sound of win
         winsound.PlaySound('b.wav',winsound.SND_FILENAME)
     else:
         pic_4 = Label(root, image=wrong).grid(row=2, column=0)
+        #sound of lose
         winsound.PlaySound('a.wav',winsound.SND_FILENAME)
 
 #Box to type + sent button
