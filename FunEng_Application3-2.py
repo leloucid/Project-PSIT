@@ -3,17 +3,7 @@
 from Tkinter import *
 import random
 import winsound
-
-class MainApp:
-    #constructor
-    def __init__(self,mainwindow):
-        mainwindow.title("FunEng Application")
-    
-#create a Tk root widget, a simple window
 root = Tk()
-#create an object from class App
-app = MainApp(root)
-
 #Head
 '''
 English practice game more and more fun!

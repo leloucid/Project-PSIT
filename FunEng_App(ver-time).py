@@ -33,7 +33,7 @@ def printcheck(answer):
                  , font=("Helvetica", 19)\
                , fg="#5f62d9", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
     else:
-        print 'kakkkkkkkkkkkkkkk'
+        print 'Not Correct'
 
 #timer
 import Tkinter as tk
