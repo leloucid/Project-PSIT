@@ -3,6 +3,7 @@
 from Tkinter import *
 import random
 import winsound
+import time
 
 class MainApp:
     #constructor
@@ -82,17 +83,19 @@ wrong  = PhotoImage(file="Poji2.gif")
 right  = PhotoImage(file="Poji.gif")
 top = PhotoImage(file="top1.gif")
 gm = PhotoImage(file="gm.gif")
+time_1 = PhotoImage(file="time.gif")
+score_1 = PhotoImage(file="score.gif")
+answer_1 = PhotoImage(file="answer.gif")
+desk = PhotoImage(file="desk.gif")
 pic_1 = Label(root, image=avatar).grid(row=2, column=0)
 pic_2 = Label(root, image=bubble).grid(row=2, column=1)
 header = Label(root, image=top).grid(row=0, column=1)
 gamemaster = Label(root, image=gm).grid(row=0, column=0)
+score_word = Label(root, image=score_1).grid(row=3, column=2)
+time_word = Label(root, image=time_1, anchor=S).grid(row=3, column=0)
+answer_word = Label(root, image=answer_1).grid(row=3, column=1)
+desk_1 = Label(root, image=desk).grid(row=2, column=2)
 score = 0
-word_score= Message(root, text="Score"\
-                    , font=("Helvetica", 19)\
-                , fg="#9a2f2f", anchor=S).grid(row=3 ,column=2)
-word_time = Message(root, text="Your time"\
-                    , width=200, font=("Helvetica", 19)\
-                , fg="#9a2f2f", anchor=S).grid(row=3 ,column=0)
 score_board = Message(root, text=score\
                     , font=("Helvetica", 19)\
                 , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
@@ -148,8 +151,6 @@ answer_2 = Message(root, text="%s" % (wrd)\
                 anchor=N).grid(row=2 ,column=1)
 
 #timer
-import Tkinter as tk
-import time
 
 def start():
     global count_flag
@@ -175,9 +176,9 @@ def quiting():
 # this will be a global flag
 count_flag = True
 # create needed widgets
-label = tk.Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
-btn_start = tk.Button(root, text='start', command=start, \
-                      font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
+label = Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
+btn_start = Button(root, text='start', command=start, \
+                   font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
 # use a grid to place the widgets
 label.grid(row=4, column=0, columnspan=1)
 # start 
