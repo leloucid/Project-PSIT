@@ -87,14 +87,16 @@ time_1 = PhotoImage(file="time.gif")
 score_1 = PhotoImage(file="score.gif")
 answer_1 = PhotoImage(file="answer.gif")
 desk = PhotoImage(file="desk.gif")
-pic_1 = Label(root, image=avatar).grid(row=2, column=0)
+notice = PhotoImage(file="notice.gif")
+pic_1 = Label(root, image=avatar).grid(row=2, column=0, sticky=S)
 pic_2 = Label(root, image=bubble).grid(row=2, column=1)
+notice_1 = Label(root, image=notice).grid(row=0, column=2)
 header = Label(root, image=top).grid(row=0, column=1)
 gamemaster = Label(root, image=gm).grid(row=0, column=0)
 score_word = Label(root, image=score_1).grid(row=3, column=2)
-time_word = Label(root, image=time_1, anchor=S).grid(row=3, column=0)
+time_word = Label(root, image=time_1).grid(row=3, column=0)
 answer_word = Label(root, image=answer_1).grid(row=3, column=1)
-desk_1 = Label(root, image=desk).grid(row=2, column=2)
+desk_1 = Label(root, image=desk).grid(row=2, column=2, sticky=S)
 score = 0
 score_board = Message(root, text=score\
                     , font=("Helvetica", 19)\
@@ -116,7 +118,7 @@ def printcheck(answer, point):
         answer_2 = Message(root, text="%s" % (wrd)\
                 , font=("Helvetica", 19)\
                 , fg="#9a2f2f", width=200, justify=LEFT,\
-                anchor=N).grid(row=2 ,column=1)
+                anchor=N).grid(row=2 ,column=1, sticky=S)
         pic_3 = Label(root, image=right).grid(row=2, column=0)
         winsound.PlaySound('b.wav',winsound.SND_FILENAME)
         print 'Correct'
@@ -130,7 +132,7 @@ def printcheck(answer, point):
                     , font=("Helvetica", 19), width=500\
                 , fg="#9a2f2f", anchor=S).grid(row=2 ,column=1)
     else:
-        pic_4 = Label(root, image=wrong).grid(row=2, column=0)
+        pic_4 = Label(root, image=wrong).grid(row=2, column=0, sticky=S)
         winsound.PlaySound('a.wav',winsound.SND_FILENAME)
         print 'Not Correct'
 
@@ -188,7 +190,7 @@ btn_start.grid(row=5, column=0, padx=1, pady=1)
 qui = Button(root, text="Quit", font=("Helvetica", 14)\
               , fg="#ff4e4e", bg="#e8f5ff",\
              justify=RIGHT, command=quiting)
-qui.grid(row=5, column=3)
+qui.grid(row=5, column=2, sticky=SE)
 
 
 mainloop()
