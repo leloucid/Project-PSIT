@@ -26,7 +26,7 @@ dct = {'expect':'คาดหวัง', \
        'kinetic':'เกี่ยวกับการเคลื่อนไหว',\
        'nanotechnology':'นาโนเทคโนโลยี',\
        'nervous':'ประหม่า',\
-       'plasma':'ส่วนที่เป็นนํ้าสีเหลืองในเลือด',\
+       'plasma':'ส่วนที่เป็นนํ้าสีเหลือง',\
        'reparation':'การซ่อมแซม',\
        'respiration':'การหายใจ',\
        'taxonomy':'การจัดแบ่งสิ่งมีชีวิต',\
@@ -86,23 +86,46 @@ pic_1 = Label(root, image=avatar).grid(row=2, column=0)
 pic_2 = Label(root, image=bubble).grid(row=2, column=1)
 header = Label(root, image=top).grid(row=0, column=1)
 gamemaster = Label(root, image=gm).grid(row=0, column=0)
+score = 0
+word_score= Message(root, text="Score"\
+                    , font=("Helvetica", 19)\
+                , fg="#9a2f2f", anchor=S).grid(row=3 ,column=2)
+word_time = Message(root, text="Your time"\
+                    , width=200, font=("Helvetica", 19)\
+                , fg="#9a2f2f", anchor=S).grid(row=3 ,column=0)
+score_board = Message(root, text=score\
+                    , font=("Helvetica", 19)\
+                , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
+
 def printcheck(answer, point):
     '''
     check if the answer is right or wrong
     '''
     print type(answer)
     global wrd
+    global score
     if dct.has_key(answer.lower()) == True and dct[answer.lower()] == wrd :
         answer_2 = Message(root, text="                                    "\
-                    , font=("Helvetica", 19)\
-                , fg="#9a2f2f", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+                , font=("Helvetica", 19)\
+                , fg="#9a2f2f", width=200, justify=LEFT,\
+                anchor=N).grid(row=2 ,column=1)
         wrd = random.choice(dct.values())
         answer_2 = Message(root, text="%s" % (wrd)\
-                    , font=("Helvetica", 19)\
-                , fg="#9a2f2f", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+                , font=("Helvetica", 19)\
+                , fg="#9a2f2f", width=200, justify=LEFT,\
+                anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0)
         winsound.PlaySound('b.wav',winsound.SND_FILENAME)
         print 'Correct'
+        score += 10
+        score_board = Message(root, text=score\
+                , font=("Helvetica", 19)\
+                , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
+        if score == 300:
+            stop()
+            endding = Message(root, text="<< GAME END! see your score"\
+                    , font=("Helvetica", 19), width=500\
+                , fg="#9a2f2f", anchor=S).grid(row=2 ,column=1)
     else:
         pic_4 = Label(root, image=wrong).grid(row=2, column=0)
         winsound.PlaySound('a.wav',winsound.SND_FILENAME)
@@ -113,19 +136,16 @@ point = Entry(root)
 answer = Entry(root)
 answer.grid(row=4, column=1)
 sent = Button(root, text="Sent!", font=("Helvetica", 14)\
-              , fg="#ff4e4e", bg="#e8f5ff", command= lambda: printcheck(answer.get(), point))
+              , fg="#ff4e4e", bg="#e8f5ff",\
+              command= lambda: printcheck(answer.get(), point))
 sent.grid(row=5, column=1)
 point = 0
-
-#Quit button
-qui = Button(root, text="Quit", font=("Helvetica", 14)\
-              , fg="#ff4e4e", bg="#e8f5ff", command=root.destroy)
-qui.grid(row=5, column=2)
 
 #Answer box 
 answer_2 = Message(root, text="%s" % (wrd)\
                  , font=("Helvetica", 19)\
-               , fg="#9a2f2f", width=200, justify=LEFT, anchor=N).grid(row=2 ,column=1)
+               , fg="#9a2f2f", width=200, justify=LEFT,\
+                anchor=N).grid(row=2 ,column=1)
 
 #timer
 import Tkinter as tk
@@ -149,19 +169,25 @@ def start():
 def stop():
     global count_flag
     count_flag = False
+def quiting():
+    stop()
+    root.destroy()
 # this will be a global flag
 count_flag = True
 # create needed widgets
 label = tk.Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
 btn_start = tk.Button(root, text='start', command=start, \
                       font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
-btn_stop = tk.Button(root, text='stop', command=stop, \
-                     font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
 # use a grid to place the widgets
-label.grid(row=3, column=0, columnspan=1)
+label.grid(row=4, column=0, columnspan=1)
 # start 
-btn_start.grid(row=4, column=0, padx=1, pady=1)
-# stop
-btn_stop.grid(row=5, column=0, padx=1)
+btn_start.grid(row=5, column=0, padx=1, pady=1)
+
+#Quit button
+qui = Button(root, text="Quit", font=("Helvetica", 14)\
+              , fg="#ff4e4e", bg="#e8f5ff",\
+             justify=RIGHT, command=quiting)
+qui.grid(row=5, column=3)
+
 
 mainloop()
