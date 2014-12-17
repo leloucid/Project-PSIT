@@ -217,22 +217,15 @@ def quiting():
 count_flag = True
 # create needed widgets
 label = Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
-<<<<<<< HEAD
 btn_start = Button(root, text='start', command=start, \
                    font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
-=======
 btn_start = Button(root, text='Start', command=start, \
                    font=("Helvetica", 14), fg="#9a2f2f", bg="#e8f5ff")
->>>>>>> origin/master
 # use a grid to place the widgets
 label.grid(row=4, column=0, columnspan=1)
 # start 
 btn_start.grid(row=5, column=0, padx=1, pady=1)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 #Quit button
 qui = Button(root, text="Quit", font=("Helvetica", 14)\
               , fg="#ff4e4e", bg="#e8f5ff",\
