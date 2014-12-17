@@ -112,6 +112,8 @@ dct = {'expect':'คาดหวัง', \
        'neighborhood':'บ้านใกล้เรือนเคียง',\
        }
 wrd = random.choice(dct.values())
+
+
 #Photo for app
 avatar = PhotoImage(file="Poji3.gif")
 bubble = PhotoImage(file="bubble2.gif")
@@ -215,12 +217,15 @@ def quiting():
 count_flag = True
 # create needed widgets
 label = Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
-btn_start = Button(root, text='start', command=start, \
-                   font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
+btn_start = Button(root, text='Start', command=start, \
+                   font=("Helvetica", 14), fg="#9a2f2f", bg="#e8f5ff")
 # use a grid to place the widgets
 label.grid(row=4, column=0, columnspan=1)
 # start 
 btn_start.grid(row=5, column=0, padx=1, pady=1)
+
+# Answer
+
 
 #Quit button
 qui = Button(root, text="Quit", font=("Helvetica", 14)\
