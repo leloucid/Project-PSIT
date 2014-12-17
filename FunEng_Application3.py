@@ -113,12 +113,12 @@ def printcheck(answer, point):
         answer_2 = Message(root, text="                                    "\
                 , font=("Helvetica", 19)\
                 , fg="#9a2f2f", width=200, justify=LEFT,\
-                anchor=N).grid(row=2 ,column=1)
+                anchor=N).grid(row=2 ,column=1, sticky=S)
         wrd = random.choice(dct.values())
         answer_2 = Message(root, text="%s" % (wrd)\
                 , font=("Helvetica", 19)\
                 , fg="#9a2f2f", width=200, justify=LEFT,\
-                anchor=N).grid(row=2 ,column=1, sticky=S)
+                anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0)
         winsound.PlaySound('b.wav',winsound.SND_FILENAME)
         print 'Correct'
