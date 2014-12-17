@@ -74,7 +74,43 @@ dct = {'expect':'คาดหวัง', \
        'military':'ทหาร',\
        'nerve':'เส้นประสาท',\
        'parliament':'รัฐสภา',\
-       'tribe':'เผ่า'}
+       'tribe':'เผ่า',\
+       'substance':'เนื้อหา,ใจความ',\
+       'especially':'โดยเฉพาะ',\
+       'perhaps':'บางที',\
+       'pharmacist':'เภสัชกร',\
+       'inspector':'สารวัตร',\
+       'tempestuous':'ซึ่งมีพายุแรง',\
+       'subjugate':'ปราบปราม',\
+       'supercilious':'ดูถูก,เหยียดหยาม',\
+       'nihilism':'การก่อการร้าย',\
+       'notarize':'รับรอง,จดทะเบียน',\
+       'parameter':'ตัวแปร',\
+       'quality':'คุณภาพ',\
+       'manufacture':'โรงงาน',\
+       'scheme':'แบบแผน',\
+       'partition':'การแบ่งแยก',\
+       'paramount':'ซึ่งมีอำนาจสูงสุด',\
+       'pamphlet':'แผ่นพับ',\
+       'abundance':'อุดมสมบูรณ์',\
+       'abstract':'ที่เป็นนามธรรม',\
+       'barrister':'เนติบัณฑิต',\
+       'barricade':'สิ่งกีดขวาง',\
+       'candidate':'ผู้สมัครรับเลือกตั้ง',\
+       'cabinet':'คณะรัฐมนตรี',\
+       'obvious':'ชัดเจน,เด่นชัด',\
+       'obscure':'คลุมเครือ,มืดมัว',\
+       'reason':'เหตุผล',\
+       'rarely':'อย่างหายาก',\
+       'rapidly':'อย่างรวดเร็ว',\
+       'rebate':'ส่วนลด,เงินคืน',\
+       'rebuke':'ต่อว่า,ตำหนิ',\
+       'headquarters':'สำนักงานใหญ่',\
+       'haughty':'โอหัง,ถือตัว',\
+       'warehouse':'โกดังสินค้า',\
+       'nevertheless':'อย่างไรก็ตาม',\
+       'neighborhood':'บ้านใกล้เรือนเคียง',\
+       }
 wrd = random.choice(dct.values())
 #Photo for app
 avatar = PhotoImage(file="Poji3.gif")
@@ -113,13 +149,13 @@ def printcheck(answer, point):
         answer_2 = Message(root, text="                                    "\
                 , font=("Helvetica", 19)\
                 , fg="#9a2f2f", width=200, justify=LEFT,\
-                anchor=N).grid(row=2 ,column=1, sticky=S)
+                anchor=N).grid(row=2 ,column=1)
         wrd = random.choice(dct.values())
         answer_2 = Message(root, text="%s" % (wrd)\
                 , font=("Helvetica", 19)\
                 , fg="#9a2f2f", width=200, justify=LEFT,\
                 anchor=N).grid(row=2 ,column=1)
-        pic_3 = Label(root, image=right).grid(row=2, column=0)
+        pic_3 = Label(root, image=right).grid(row=2, column=0, sticky=S)
         winsound.PlaySound('b.wav',winsound.SND_FILENAME)
         print 'Correct'
         score += 10
