@@ -5,6 +5,9 @@ import random
 import winsound
 import time
 
+# myEdit 00
+import thread
+
 class MainApp:
     #constructor
     def __init__(self,mainwindow):
@@ -140,6 +143,10 @@ score_board = Message(root, text=score\
                     , font=("Helvetica", 19)\
                 , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
 
+# myEdit 01
+def playSE(file_name):
+    winsound.PlaySound(file_name,winsound.SND_FILENAME)
+
 def printcheck(answer, point):
     '''
     check if the answer is right or wrong
@@ -158,7 +165,9 @@ def printcheck(answer, point):
                 , fg="#9a2f2f", width=200, justify=LEFT,\
                 anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0, sticky=S)
-        winsound.PlaySound('b.wav',winsound.SND_FILENAME)
+        #winsound.PlaySound('b.wav',winsound.SND_FILENAME)
+        # myEdit 02
+        thread.start_new_thread(playSE, ('b.wav',))
         print 'Correct'
         score += 10
         score_board = Message(root, text=score\
@@ -166,12 +175,14 @@ def printcheck(answer, point):
                 , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
         if score == 300:
             stop()
-            endding = Message(root, text="<< GAME END! see your score"\
+            endding = Message(root, text="<< GAME END! see your time"\
                     , font=("Helvetica", 19), width=500\
                 , fg="#9a2f2f", anchor=S).grid(row=2 ,column=1)
     else:
         pic_4 = Label(root, image=wrong).grid(row=2, column=0, sticky=S)
-        winsound.PlaySound('a.wav',winsound.SND_FILENAME)
+        #winsound.PlaySound('a.wav',winsound.SND_FILENAME)
+        # myEdit 03
+        thread.start_new_thread(playSE, ('a.wav',))
         print 'Not Correct'
 
 #Box to type + sent button
@@ -196,11 +207,13 @@ def start():
     global count_flag
     count_flag = True
     count = 0.0
+    start_time = time.time()
     while True:
         if count_flag == False:
             break
         # put the count value into the label
-        label['text'] = str(count)
+        #label['text'] = str(count)
+        label['text'] = "%.1f" % (time.time() - start_time)
         # wait for 0.1 seconds
         time.sleep(0.1)
         # needed with time.sleep()
