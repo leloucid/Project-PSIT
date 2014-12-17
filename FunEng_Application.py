@@ -112,7 +112,18 @@ dct = {'expect':'คาดหวัง', \
        'haughty':'โอหัง,ถือตัว',\
        'warehouse':'โกดังสินค้า',\
        'nevertheless':'อย่างไรก็ตาม',\
-       'neighborhood':'บ้านใกล้เรือนเคียง'
+       'neighborhood':'บ้านใกล้เรือนเคียง',\
+       'accommodate':'ปรับตัว',\
+       'panorama':'ภาพที่เห็นได้กว้าง',\
+       'parallel':'ขนาน',\
+       'wallet':'กระเป๋าใส่เงิน',\
+       'weave':'ถักทอ',\
+       'nexus':'การเชื่อมต่อ',\
+       'nobility':'ความสง่างาม',\
+       'parcel':'พัสดุ',\
+       'salary':'เงินเดือน',\
+       'verify':'ตรวจสอบ',\
+       'variety':'ความหลากหลาย'
        }
 wrd = random.choice(dct.values())
 
