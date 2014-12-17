@@ -74,8 +74,46 @@ dct = {'expect':'คาดหวัง', \
        'military':'ทหาร',\
        'nerve':'เส้นประสาท',\
        'parliament':'รัฐสภา',\
-       'tribe':'เผ่า'}
+       'tribe':'เผ่า',\
+       'substance':'เนื้อหา,ใจความ',\
+       'especially':'โดยเฉพาะ',\
+       'perhaps':'บางที',\
+       'pharmacist':'เภสัชกร',\
+       'inspector':'สารวัตร',\
+       'tempestuous':'ซึ่งมีพายุแรง',\
+       'subjugate':'ปราบปราม',\
+       'supercilious':'ดูถูก,เหยียดหยาม',\
+       'nihilism':'การก่อการร้าย',\
+       'notarize':'รับรอง,จดทะเบียน',\
+       'parameter':'ตัวแปร',\
+       'quality':'คุณภาพ',\
+       'manufacture':'โรงงาน',\
+       'scheme':'แบบแผน',\
+       'partition':'การแบ่งแยก',\
+       'paramount':'ซึ่งมีอำนาจสูงสุด',\
+       'pamphlet':'แผ่นพับ',\
+       'abundance':'อุดมสมบูรณ์',\
+       'abstract':'ที่เป็นนามธรรม',\
+       'barrister':'เนติบัณฑิต',\
+       'barricade':'สิ่งกีดขวาง',\
+       'candidate':'ผู้สมัครรับเลือกตั้ง',\
+       'cabinet':'คณะรัฐมนตรี',\
+       'obvious':'ชัดเจน,เด่นชัด',\
+       'obscure':'คลุมเครือ,มืดมัว',\
+       'reason':'เหตุผล',\
+       'rarely':'อย่างหายาก',\
+       'rapidly':'อย่างรวดเร็ว',\
+       'rebate':'ส่วนลด,เงินคืน',\
+       'rebuke':'ต่อว่า,ตำหนิ',\
+       'headquarters':'สำนักงานใหญ่',\
+       'haughty':'โอหัง,ถือตัว',\
+       'warehouse':'โกดังสินค้า',\
+       'nevertheless':'อย่างไรก็ตาม',\
+       'neighborhood':'บ้านใกล้เรือนเคียง',\
+       }
 wrd = random.choice(dct.values())
+
+
 #Photo for app
 avatar = PhotoImage(file="Poji3.gif")
 bubble = PhotoImage(file="bubble2.gif")
@@ -179,13 +217,22 @@ def quiting():
 count_flag = True
 # create needed widgets
 label = Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
+<<<<<<< HEAD
 btn_start = Button(root, text='start', command=start, \
                    font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
+=======
+btn_start = Button(root, text='Start', command=start, \
+                   font=("Helvetica", 14), fg="#9a2f2f", bg="#e8f5ff")
+>>>>>>> origin/master
 # use a grid to place the widgets
 label.grid(row=4, column=0, columnspan=1)
 # start 
 btn_start.grid(row=5, column=0, padx=1, pady=1)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 #Quit button
 qui = Button(root, text="Quit", font=("Helvetica", 14)\
               , fg="#ff4e4e", bg="#e8f5ff",\
