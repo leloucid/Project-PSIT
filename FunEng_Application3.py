@@ -224,7 +224,12 @@ label.grid(row=4, column=0, columnspan=1)
 # start 
 btn_start.grid(row=5, column=0, padx=1, pady=1)
 
+
 # Answer
+btn_ans = Button(root, text='Answer', command=start, \
+                 font=("Helvetica", 12), fg="#9a2f2f", bg="#e8f5ff", \
+                 command=root)
+btn_ans.grid(row=2, column=2, padx=1, pady=1)
 
 
 #Quit button
