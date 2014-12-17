@@ -4,8 +4,6 @@ from Tkinter import *
 import random
 import winsound
 import time
-
-# myEdit 00
 import thread
 
 class MainApp:
@@ -154,7 +152,6 @@ score_board = Message(root, text=score\
                     , font=("Helvetica", 19)\
                 , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
 
-# myEdit 01
 def playSE(file_name):
     '''
     check missing sound bug and fix it
@@ -185,7 +182,6 @@ def printcheck(answer, point):
                 anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0, sticky=S)
         #winsound.PlaySound('b.wav',winsound.SND_FILENAME)
-        # myEdit 02
         thread.start_new_thread(playSE, ('b.wav',))
         print 'Correct'
         score += 10
@@ -200,7 +196,6 @@ def printcheck(answer, point):
     else:
         pic_4 = Label(root, image=wrong).grid(row=2, column=0, sticky=S)
         #winsound.PlaySound('a.wav',winsound.SND_FILENAME)
-        # myEdit 03
         thread.start_new_thread(playSE, ('a.wav',))
         print 'Not Correct'
 
@@ -223,7 +218,7 @@ answer_2 = Message(root, text="%s" % (wrd)\
 
 #timer
 
-def start():artht 
+def start():
     '''
     start the stop watch
     '''
