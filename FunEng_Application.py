@@ -112,7 +112,7 @@ dct = {'expect':'คาดหวัง', \
        'haughty':'โอหัง,ถือตัว',\
        'warehouse':'โกดังสินค้า',\
        'nevertheless':'อย่างไรก็ตาม',\
-       'neighborhood':'บ้านใกล้เรือนเคียง',\
+       'neighborhood':'บ้านใกล้เรือนเคียง'
        }
 wrd = random.choice(dct.values())
 
@@ -236,6 +236,23 @@ btn_start = Button(root, text='Start', command=start, \
 label.grid(row=4, column=0, columnspan=1)
 # start 
 btn_start.grid(row=5, column=0, padx=1, pady=1)
+
+# Answer dict
+def showdict():
+    global root
+    global dct
+    answerwindow = Toplevel(root)
+
+    for i, key in zip(xrange(len(dct.keys())), dct.keys()):
+        if i%20 == 0:
+            tempframe = Frame(answerwindow)
+            tempframe.pack(padx=20, side=LEFT)
+        Label(tempframe, text=key+" = "+dct[key]).pack()
+
+# Answer button
+btn_ans = Button(root, text='Answer', command=showdict, \
+                 font=("Helvetica", 12), fg="#9a2f2f", bg="#e8f5ff")
+btn_ans.grid(row=2, column=2, padx=1, pady=1)
 
 
 #Quit button
