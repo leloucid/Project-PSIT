@@ -206,6 +206,7 @@ answer_2 = Message(root, text="%s" % (wrd)\
 #timer
 
 def start():
+    '''start time'''
     global count_flag
     count_flag = True
     count = 0.0
@@ -221,9 +222,11 @@ def start():
         # increase count
         count += 0.1
 def stop():
+    '''stop time'''
     global count_flag
     count_flag = False
 def quiting():
+    '''quit game'''
     stop()
     root.destroy()
 # this will be a global flag
@@ -239,6 +242,7 @@ btn_start.grid(row=5, column=0, padx=1, pady=1)
 
 # Answer dict
 def showdict():
+    '''show all answer'''
     global root
     global dct
     answerwindow = Toplevel(root)
