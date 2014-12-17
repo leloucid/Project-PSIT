@@ -5,6 +5,9 @@ import random
 import winsound
 import time
 
+# myEdit 00
+import thread
+
 class MainApp:
     #constructor
     def __init__(self,mainwindow):
@@ -109,7 +112,7 @@ dct = {'expect':'คาดหวัง', \
        'haughty':'โอหัง,ถือตัว',\
        'warehouse':'โกดังสินค้า',\
        'nevertheless':'อย่างไรก็ตาม',\
-       'neighborhood':'บ้านใกล้เรือนเคียง',\
+       'neighborhood':'บ้านใกล้เรือนเคียง'
        }
 wrd = random.choice(dct.values())
 
@@ -140,6 +143,11 @@ score_board = Message(root, text=score\
                     , font=("Helvetica", 19)\
                 , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
 
+# myEdit 01
+def playSE(file_name):
+    winsound.PlaySound(file_name,winsound.SND_FILENAME)
+    thread.exit()
+
 def printcheck(answer, point):
     '''
     check if the answer is right or wrong
@@ -158,7 +166,9 @@ def printcheck(answer, point):
                 , fg="#9a2f2f", width=200, justify=LEFT,\
                 anchor=N).grid(row=2 ,column=1)
         pic_3 = Label(root, image=right).grid(row=2, column=0, sticky=S)
-        winsound.PlaySound('b.wav',winsound.SND_FILENAME)
+        #winsound.PlaySound('b.wav',winsound.SND_FILENAME)
+        # myEdit 02
+        thread.start_new_thread(playSE, ('b.wav',))
         print 'Correct'
         score += 10
         score_board = Message(root, text=score\
@@ -166,18 +176,21 @@ def printcheck(answer, point):
                 , fg="#9a2f2f", anchor=S).grid(row=4 ,column=2)
         if score == 300:
             stop()
-            endding = Message(root, text="<< GAME END! see your score"\
+            endding = Message(root, text="<< GAME END! see your time"\
                     , font=("Helvetica", 19), width=500\
                 , fg="#9a2f2f", anchor=S).grid(row=2 ,column=1)
     else:
         pic_4 = Label(root, image=wrong).grid(row=2, column=0, sticky=S)
-        winsound.PlaySound('a.wav',winsound.SND_FILENAME)
+        #winsound.PlaySound('a.wav',winsound.SND_FILENAME)
+        # myEdit 03
+        thread.start_new_thread(playSE, ('a.wav',))
         print 'Not Correct'
 
 #Box to type + sent button
 point = Entry(root)        
 answer = Entry(root)
 answer.grid(row=4, column=1)
+answer.bind("<Return>", lambda event: printcheck(answer.get(), point))
 sent = Button(root, text="Sent!", font=("Helvetica", 14)\
               , fg="#ff4e4e", bg="#e8f5ff",\
               command= lambda: printcheck(answer.get(), point))
@@ -217,14 +230,33 @@ def quiting():
 count_flag = True
 # create needed widgets
 label = Label(root, text='0.0', font = ("Helvetica", 20), fg="#ff9584")
-btn_start = Button(root, text='start', command=start, \
-                   font=("Helvetica", 10), fg="#9a2f2f", bg="#e8f5ff")
 btn_start = Button(root, text='Start', command=start, \
                    font=("Helvetica", 14), fg="#9a2f2f", bg="#e8f5ff")
 # use a grid to place the widgets
 label.grid(row=4, column=0, columnspan=1)
 # start 
 btn_start.grid(row=5, column=0, padx=1, pady=1)
+
+# Answer dict
+def showdict():
+    global root
+    global dct
+    answerwindow = Toplevel(root)
+    answerwindow.transient(root)
+    answerwindow.grab_set()
+    answerwindow.focus_set()
+
+    for i, key in zip(xrange(len(dct.keys())), dct.keys()):
+        if i%20 == 0:
+            tempframe = Frame(answerwindow)
+            tempframe.pack(padx=20, side=LEFT)
+        Label(tempframe, text=key+" = "+dct[key]).pack()
+
+# Answer button
+btn_ans = Button(root, text='Answer', command=showdict, \
+                 font=("Helvetica", 12), fg="#9a2f2f", bg="#e8f5ff")
+btn_ans.grid(row=2, column=2, padx=1, pady=1)
+
 
 #Quit button
 qui = Button(root, text="Quit", font=("Helvetica", 14)\
