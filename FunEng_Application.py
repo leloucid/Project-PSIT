@@ -156,6 +156,9 @@ score_board = Message(root, text=score\
 
 # myEdit 01
 def playSE(file_name):
+    '''
+    check missing sound bug and fix it
+    '''
     try:
         winsound.PlaySound(file_name,winsound.SND_FILENAME)
         thread.exit()
@@ -220,7 +223,10 @@ answer_2 = Message(root, text="%s" % (wrd)\
 
 #timer
 
-def start():
+def start():artht 
+    '''
+    start the stop watch
+    '''
     global count_flag
     count_flag = True
     count = 0.0
@@ -236,9 +242,15 @@ def start():
         # increase count
         count += 0.1
 def stop():
+    '''
+    stop the stop watch when finish game and exist
+    '''
     global count_flag
     count_flag = False
 def quiting():
+    '''
+    quit game
+    '''
     stop()
     root.destroy()
 # this will be a global flag
@@ -254,6 +266,9 @@ btn_start.grid(row=5, column=0, padx=1, pady=1)
 
 # Answer dict
 def showdict():
+    '''
+    show the answer of all words
+    '''
     global root
     global dct
     answerwindow = Toplevel(root)
